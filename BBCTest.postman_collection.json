@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "7bac6776-43c5-4c89-990f-17317484e0d4",
+		"name": "BBCTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SampleGet weatherBBC",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get London Weather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Location",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "133527f2-426e-421c-9b2d-7361f6d17231",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"woeid\", jsonData[0].woeid);",
+							"// pm.test(\"Status 200 is present\", function () {",
+							"//     pm.response.to.have.status(200);",
+							"// });",
+							"console.log(jsonData[0].woeid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "query",
+						"value": "baroda",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{test-url}}/location/search/?query=baroda",
+					"host": [
+						"{{test-url}}"
+					],
+					"path": [
+						"location",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "baroda"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
