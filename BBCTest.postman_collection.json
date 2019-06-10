@@ -22,7 +22,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{test-url}}/location/{{woeid}}",
+					"host": [
+						"{{test-url}}"
+					],
+					"path": [
+						"location",
+						"{{woeid}}"
+					]
 				}
 			},
 			"response": []
@@ -33,13 +40,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "133527f2-426e-421c-9b2d-7361f6d17231",
+						"id": "77917a5d-cad7-49de-bc55-a86a4fa07e12",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"pm.environment.set(\"woeid\", jsonData[0].woeid);",
-							"// pm.test(\"Status 200 is present\", function () {",
-							"//     pm.response.to.have.status(200);",
-							"// });",
+							"pm.test(\"Status 200 is present\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							"console.log(jsonData[0].woeid);"
 						],
 						"type": "text/javascript"
@@ -61,7 +68,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{test-url}}/location/search/?query=baroda",
+					"raw": "{{test-url}}/location/search/?query=london",
 					"host": [
 						"{{test-url}}"
 					],
@@ -73,7 +80,7 @@
 					"query": [
 						{
 							"key": "query",
-							"value": "baroda"
+							"value": "london"
 						}
 					]
 				}
