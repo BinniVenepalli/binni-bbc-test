@@ -63,8 +63,9 @@
 					},
 					{
 						"key": "query",
-						"value": "baroda",
-						"type": "text"
+						"value": "",
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"url": {
